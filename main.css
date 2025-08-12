@@ -1,7 +1,47 @@
+    
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+nav {
+    background-color: #f0f0f0;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+  }
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+  } 
+  
+  nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+  } 
+
     body {
         background-image: url('athens.jpg');
         background-repeat: no-repeat; /* Prevents the image from repeating */
         background-position: center center; /* Centers the image */
         background-size: cover; /* Ensures the image covers the entire area */
         background-attachment: fixed; /* Keeps the background image fixed while scrolling */
+    }
+
+    .mainForm h1 {
+        color: gold;
+        margin-top: 10%;
+        margin-left: 5%;
+        margin-bottom: 5%;
+    }
+
+    #introText {
+        color: gold;
+        font-size: large;
+        margin-left: 5%;
     }
