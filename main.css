@@ -1,0 +1,7 @@
+    body {
+        background-image: url('athens.jpg');
+        background-repeat: no-repeat; /* Prevents the image from repeating */
+        background-position: center center; /* Centers the image */
+        background-size: cover; /* Ensures the image covers the entire area */
+        background-attachment: fixed; /* Keeps the background image fixed while scrolling */
+    }
