@@ -67,7 +67,13 @@ nav {
         margin-top: 10%;
         margin-bottom: 5%;
     }
-
+    .mainForm h2 {
+        color: gold;
+        font-size: 2rem;
+        margin-top: 10%;
+        margin-bottom: 5%;
+    }
+    
     #introText {
         color: gold;
         font-size: large;

@@ -1,18 +1,22 @@
-function getEmployees() {
-
-    fetch('employees.json')
+async function getEmployees() {
+    var employees;
+    await fetch('employees.json')
       .then(response => response.json())
       .then(data => {
         //const employee = data.employees.foreach(item => item.name.toLowerCase() === input);
-        const employees = data.employees.map(emp => {return {
+        employees = data.employees.map(emp => {return {
             id: emp.id,
             name: emp.name,
             role: emp.role
-        }
+            };
+        });
+        console.log("we have " + employees.length + " employees");
+        
     });
-    
-    listEmployees(employees);
-        if (employees) {
+    console.log("we still have " + employees.length + " employees");
+    return employees;
+    //listEmployees(employees);
+    /*    if (employees) {
           console.log("we have employees to list");
         } else {
           resultDiv.innerHTML = 'No employees found.';
@@ -22,21 +26,21 @@ function getEmployees() {
       .catch(error => {
         console.error('Error:', error);
         resultDiv.innerHTML = 'An error occurred while fetching employee data.';
-      });
+      });*/
   }
-
-var emps = getEmployees();
-listEmployees(emps);
 
 function listEmployees(employees) {
-    var employeeList = employees;
-    const numEmployees = employeeList.length;
-    employeeList.innerHTML='';
-
-    for (const employee of employees) {
-
-        employeeList.innerHTML = `Name: ${employee.name}<br>`;
-        employeeList.innerHTML += `Title: ${employee.role}<br><br>`;
-
+      const employeeList = employees;
+      const numEmployees = employeeList.length;
+      console.log("made it to listEmployees and have " + numEmployees + " employees");
+      employeeList.innerHTML='';
+  
+      for (const employee of employees) {
+  
+          employeeList.innerHTML = `Name: ${employee.name}<br>`;
+          employeeList.innerHTML += `Title: ${employee.role}<br><br>`;
+  
+    }
   }
-}
+
+const emps = getEmployees();
