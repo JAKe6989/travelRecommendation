@@ -9,24 +9,48 @@ nav {
     padding: 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    
+    justify-content: space-between; 
   }
 
-nav ul li {
-    display: inline;
+  nav ul {  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-right: 10px;
+  }
+
+  nav li {  
+    /*display: flex;
+    align-items: center;*/
+    margin-right: 10px;
+    display: inline-block;
   } 
-  
+  .nav-centered-items {
+    display: flex;
+    justify-content: center; /* Centers content horizontally */
+    flex-grow: 1; /* Allows it to take up available space */
+  }
   nav a {
     text-decoration: none;
     color: #333;
     font-weight: bold;
-    text-align: center;
+  }
+  nav a:hover {
+    background-color: darkgray;
   } 
 
+  /*nav li .nav-right-item {
+    position: absolute;
+    right: 10;
+    text-align: right;
+  }*/
+
+  .med-input {
+    width: 300px;
+  }
+
     body {
-        background-image: url('athens.jpg');
+        background-image: url('./images/athens.jpg');
         background-repeat: no-repeat; /* Prevents the image from repeating */
         background-position: center center; /* Centers the image */
         background-size: cover; /* Ensures the image covers the entire area */
