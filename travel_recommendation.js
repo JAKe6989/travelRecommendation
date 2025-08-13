@@ -1,3 +1,5 @@
+const btnSearch = document.getElementById('btnSearch');
+
 function searchKeyword() {
     const input = document.getElementById('keyWord').value.toLowerCase();
     const resultDiv = document.getElementById('result');
