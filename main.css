@@ -33,15 +33,23 @@ nav ul li {
         background-attachment: fixed; /* Keeps the background image fixed while scrolling */
     }
 
+    .mainForm {
+        margin-left: 5%;
+        margin-top: 5%;
+    }
     .mainForm h1 {
         color: gold;
+        font-size: 3rem;
         margin-top: 10%;
-        margin-left: 5%;
         margin-bottom: 5%;
     }
 
     #introText {
         color: gold;
         font-size: large;
-        margin-left: 5%;
+        max-width: 300px;
+    }
+
+    #book {
+        margin-top: 3%;
     }
