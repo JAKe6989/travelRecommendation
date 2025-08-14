@@ -16,6 +16,11 @@ function searchKeyword() {
         console.log(data);
 
         var countryDestinations = data.countries.filter(country => {return country.name.toLowerCase().includes(keyword)});
+        console.log(`country matches: `);
+        console.log(countryDestinations);
+        //const countryDestinationObject = Object.values(countryDestinations); //JSON.parse(countryDestinations);
+        const countryObjectArray = Object.values(countryDestinations);
+        console.log(countryObjectArray);
         /*for (const category in data) {
             if (category.toLowerCase().includes(keyword)) {
               //return data[category]; // return all elements from that category
@@ -23,8 +28,7 @@ function searchKeyword() {
               //console.log(categoryDestinations);
             }
           }*/
-        console.log(`country matches: `);
-        console.log(countryDestinations);
+
 
         var categoryDestinations;
         for (const category in data) {
@@ -34,26 +38,30 @@ function searchKeyword() {
               //console.log(categoryDestinations);
             }
           }
+          //const categoryDestinationObject = Object.values(countryDestinations); //JSON.parse(countryDestinations);
+          const categoryObjectArray = Object.values(categoryDestinations);
         console.log(`category matches: `);
-        console.log(categoryDestinations);
+        console.log(categoryObjectArray);
 
-        const locations = countryDestinations.concat(categoryDestinations);
+        const displayLocations = countryObjectArray.concat(categoryObjectArray);
+
+        console.log("locations type is: " + typeof displayLocations);
     /*const location_keys = Object.keys(data)
         .filter(key => key.toLowerCase().includes(keyword)) // Filter keys containing "Name"
         .reduce((obj, key) => {
         return { ...obj, [key]: data[key] };
-        //})*/
-        }, {});
-        /*const location_keys = data.filter(item => {return item.toLowerCase().includes(keyword);
-            });*/
-        if (location_keys) {
-            console.log(typeof location.keys);
-            console.log(location_keys);
-            location_keys.forEach(element => {
-                console.log(element);})
-        } else {
-            recommendationsDiv.innerHTML = 'Location not found.';
-        }
+        //})
+    }, {});*/
+    /*const location_keys = data.filter(item => {return item.toLowerCase().includes(keyword);
+        });*/
+    /*if (location_keys) {
+        console.log(typeof location.keys);
+        console.log(location_keys);
+        location_keys.forEach(element => {
+            console.log(element);})
+    } else {
+        recommendationsDiv.innerHTML = 'Location not found.';
+    }*/
      })
 
         /*  const symptoms = condition.symptoms.join(', ');
@@ -115,7 +123,7 @@ btnSearch.addEventListener('click', searchKeyword);
       }
     }
   }*/
-function bookCustomer {
+function bookCustomer() {
     alert("Please call us at 716-555-1234!");
 }
-bookButton.addEventListener("click", bookCustomer);
+btnBook.addEventListener("click", bookCustomer);
