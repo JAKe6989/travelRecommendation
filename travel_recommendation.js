@@ -30,19 +30,23 @@ function searchKeyword() {
           }*/
 
 
-        var categoryDestinations;
+        var categoryDestinations=[];
         for (const category in data) {
             if (category.toLowerCase().includes(keyword)) {
-              //return data[category]; // return all elements from that category
               categoryDestinations=data[category]; // add elements 
-              //console.log(categoryDestinations);
             }
           }
+        for (const item of categoryDestinations) {
+            console.log(item.name);
+        }
           //const categoryDestinationObject = Object.values(countryDestinations); //JSON.parse(countryDestinations);
           const categoryObjectArray = Object.values(categoryDestinations);
         console.log(`category matches: `);
         console.log(categoryObjectArray);
-
+        console.log("categoryObjectArray type is: " + typeof categoryObjectArray);
+        for (item in categoryObjectArray) {
+            console.log(item);
+        }
         const displayLocations = countryObjectArray.concat(categoryObjectArray);
 
         console.log("locations type is: " + typeof displayLocations);
