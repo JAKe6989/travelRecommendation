@@ -1,38 +1,82 @@
 const btnSearch = document.getElementById('btnSearch');
 
 function searchKeyword() {
-    const input = document.getElementById('keyWord').value.toLowerCase();
-    const resultDiv = document.getElementById('result');
-    resultDiv.innerHTML = '';
+    const keyword = document.getElementById('destKeyword').value.toLowerCase();
+    console.log(`keyword is: ${keyword}`)
+    const recommendationsDiv = document.getElementById('recommendations');
+    recommendationsDiv.innerHTML = '';
 
     fetch('travel_recommendation_api.json')
-      .then(response => response.json())
+      .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json()})
       .then(data => {
-        const location_key = data.conditions.find(item => item.name.toLowerCase() === input);
+        console.log(data);
 
-        if (location_key) {
-          const symptoms = condition.symptoms.join(', ');
+        var countryDestinations = data.countries.filter(country => {return country.name.toLowerCase().includes(keyword)});
+        /*for (const category in data) {
+            if (category.toLowerCase().includes(keyword)) {
+              //return data[category]; // return all elements from that category
+              categoryDestinations=data[category]; // add elements 
+              //console.log(categoryDestinations);
+            }
+          }*/
+        console.log(`country matches: `);
+        console.log(countryDestinations);
+
+        var categoryDestinations;
+        for (const category in data) {
+            if (category.toLowerCase().includes(keyword)) {
+              //return data[category]; // return all elements from that category
+              categoryDestinations=data[category]; // add elements 
+              //console.log(categoryDestinations);
+            }
+          }
+        console.log(`category matches: `);
+        console.log(categoryDestinations);
+
+        const locations = countryDestinations.concat(categoryDestinations);
+    /*const location_keys = Object.keys(data)
+        .filter(key => key.toLowerCase().includes(keyword)) // Filter keys containing "Name"
+        .reduce((obj, key) => {
+        return { ...obj, [key]: data[key] };
+        //})*/
+        }, {});
+        /*const location_keys = data.filter(item => {return item.toLowerCase().includes(keyword);
+            });*/
+        if (location_keys) {
+            console.log(typeof location.keys);
+            console.log(location_keys);
+            location_keys.forEach(element => {
+                console.log(element);})
+        } else {
+            recommendationsDiv.innerHTML = 'Location not found.';
+        }
+     })
+
+        /*  const symptoms = condition.symptoms.join(', ');
           const prevention = condition.prevention.join(', ');
           const treatment = condition.treatment;
 
-          resultDiv.innerHTML += `<h2>${condition.name}</h2>`;
+          resultDiv.innerHTML += `<h3>${condition.name}</h3>`;
+
           resultDiv.innerHTML += `<img src="${condition.imagesrc}" alt="hjh">`;
 
           resultDiv.innerHTML += `<p><strong>Symptoms:</strong> ${symptoms}</p>`;
           resultDiv.innerHTML += `<p><strong>Prevention:</strong> ${prevention}</p>`;
           resultDiv.innerHTML += `<p><strong>Treatment:</strong> ${treatment}</p>`;
-        } else {
-          resultDiv.innerHTML = 'Location not found.';
-        }
-      })
+        */
       .catch(error => {
         console.error('Error:', error);
-        resultDiv.innerHTML = 'An error occurred while fetching data.';
+        recommendationsDiv.innerHTML = 'An error occurred while fetching data.';
       });
   }
+
 btnSearch.addEventListener('click', searchKeyword);
 
-function generateReport() {
+/*function generateReport() {
     const numPatients = patients.length;
     const conditionsCount = {
       Diabetes: 0,
@@ -70,6 +114,8 @@ function generateReport() {
         report.innerHTML += `&nbsp;&nbsp;${condition}: ${genderConditionsCount[gender][condition]}<br>`;
       }
     }
-  }
-
-addPatientButton.addEventListener("click", addPatient);
+  }*/
+function bookCustomer {
+    alert("Please call us at 716-555-1234!");
+}
+bookButton.addEventListener("click", bookCustomer);
