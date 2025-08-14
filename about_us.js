@@ -1,19 +1,30 @@
 async function getEmployees() {
     var employees;
-    await fetch('employees.json')
+    fetch('employees.json')
       .then(response => response.json())
       .then(data => {
         //const employee = data.employees.foreach(item => item.name.toLowerCase() === input);
         employees = data.employees.map(emp => {return {
             id: emp.id,
             name: emp.name,
-            role: emp.role
+            title: emp.title
             };
-        });
-        console.log("we have " + employees.length + " employees");
-        
+        })
+      /*.catch(error => {
+        console.error('Error:', error);
+        resultDiv.innerHTML = 'An error occurred while fetching data.';
+      });*/
+    
+      console.log("we have " + employees.length + " employees");
+      const employeeListDiv = document.getElementById('employeeList');
+      employeeListDiv.innerHTML='';
+  
+      for (const employee of employees) {
+          employeeListDiv.innerHTML += `Name: ${employee.name}<br>`;
+          employeeListDiv.innerHTML += `Title: ${employee.title}<br><br>`;
+        }
     });
-    console.log("we still have " + employees.length + " employees");
+    //console.log("we still have " + employees.length + " employees");
     return employees;
     //listEmployees(employees);
     /*    if (employees) {
