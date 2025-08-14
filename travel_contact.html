@@ -9,9 +9,18 @@
         text-align: center;
     }
     /* Some basic styling for demonstration purposes */
+    .container {
+        color: gold;
+    }
     #contactForm {
       max-width: 400px;
+      padding-top: 9em;
       margin: 0 auto;
+    }
+    #contactForm h1 {
+        /*color: gold;*/
+        font-size: 3rem;
+        margin-top: 10%;
     }
     #contactForm input,
     #contactForm textarea {
@@ -32,18 +41,20 @@
   </style>
 </head>
 <body>
-  <nav><h1>TRAAVEL BLOOM CONTACT PAGE</h1>
+  <nav><h1>TRAVEL BLOOM CONTACT PAGE</h1>
     <ul>
-      <li><a href="./index.html" id="home">Home </a></li>
-      <li><a href="./travel_contact.html" id="contact">Contact Us </a></li>
+      <li><a href="./travel_recommendation.html" id="home">Home </a></li>
+      <li><a href="./about_us.html" id="about">About Us </a></li>
       </li>
 
     </ul>
     </nav>
-  <h1>Contact Us</h1>
-  <p>Feel free to contact us to know more about your favorite locations to visit.</p>
 
-  <form id="contactForm">
+    <div class="container">
+    <h1>Contact Us</h1>
+    <p>Feel free to contact us to know more about your favorite locations to visit.</p>
+
+    <form id="contactForm">
     <div>
       <label for="name">Name</label>
       <input type="text" id="name" name="name" required>
@@ -61,7 +72,8 @@
       <textarea id="message" name="message" rows="5" required></textarea>
     </div>
     <button type="submit" onclick="thankyou()">Submit</button>
-  </form>
+    </form>
+    </div>
   <script>
     function thankyou(){
         alert('Thank you for contacting us!')
