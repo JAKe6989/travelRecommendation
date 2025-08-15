@@ -15,41 +15,55 @@ function searchKeyword() {
       .then(data => {
         console.log(data);
 
-        var countryDestinations = data.countries.filter(country => {return country.name.toLowerCase().includes(keyword)});
-        console.log(`country matches: `);
-        console.log(countryDestinations);
-        //const countryDestinationObject = Object.values(countryDestinations); //JSON.parse(countryDestinations);
-        const countryObjectArray = Object.values(countryDestinations);
-        console.log(countryObjectArray);
-        /*for (const category in data) {
-            if (category.toLowerCase().includes(keyword)) {
-              //return data[category]; // return all elements from that category
-              categoryDestinations=data[category]; // add elements 
-              //console.log(categoryDestinations);
-            }
-          }*/
-
-
-        var categoryDestinations=[];
-        for (const category in data) {
-            if (category.toLowerCase().includes(keyword)) {
-              categoryDestinations=data[category]; // add elements 
-            }
-          }
-        for (const item of categoryDestinations) {
-            console.log(item.name);
+        var countryDestinations = data.countries.filter(country => {
+            return country.name.toLowerCase().includes(keyword)
+        });
+        
+        const cityDestinations=[];
+        if (countryDestinations.length>0) {
+            cityDestinations = countryDestinations[0].cities;
         }
-          //const categoryDestinationObject = Object.values(countryDestinations); //JSON.parse(countryDestinations);
-          const categoryObjectArray = Object.values(categoryDestinations);
-        console.log(`category matches: `);
-        console.log(categoryObjectArray);
-        console.log("categoryObjectArray type is: " + typeof categoryObjectArray);
-        for (item in categoryObjectArray) {
-            console.log(item);
-        }
-        const displayLocations = countryObjectArray.concat(categoryObjectArray);
+        if (cityDestinations.length>0) {
 
-        console.log("locations type is: " + typeof displayLocations);
+            cityDestinations.forEach(city => {
+                console.log(city.name);
+                recommendationsDiv.innerHTML += `<div class="destDisplayObj">
+                    <img src="${city.imageUrl}" alt="noImage">
+                    <p><b>${city.name}</b>  ${city.description}</p>
+                    </div>`;
+            })
+        }    
+        else {
+            console.log('No countries match keyword.');
+
+            const countryObjectArray = Object.values(countryDestinations);
+            console.log(countryObjectArray);
+
+
+            var categoryDestinations=[];
+            for (const category in data) {
+                if (category.toLowerCase().includes(keyword)) {
+                categoryDestinations=data[category]; // add elements 
+                }
+            }
+            categoryDestinations.forEach(item => console.log(item.name));
+
+            //const categoryDestinationObject = Object.values(countryDestinations); //JSON.parse(countryDestinations);
+            const categoryObjectArray = Object.values(categoryDestinations);
+            console.log(`category matches: `);
+            console.log(categoryObjectArray);
+
+            if (categoryDestinations.length<1) {recommendationsDiv.innerHTML = 'No locations match keyword.';}
+            else {
+                categoryDestinations.forEach(item => {
+                    console.log(item.name);
+                    recommendationsDiv.innerHTML += `<div class="destDisplayObj">
+                        <img src="${item.imageUrl}" alt="noImage">
+                        <p><b>${item.name}</b>  ${item.description}</p>
+                        </div>`;
+                })
+            }
+        }
     /*const location_keys = Object.keys(data)
         .filter(key => key.toLowerCase().includes(keyword)) // Filter keys containing "Name"
         .reduce((obj, key) => {

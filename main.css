@@ -79,6 +79,30 @@ nav {
         color: gold;
         font-size: large;
         max-width: 300px;
+        margin-bottom: 30px;
+    }
+    
+    #recommendations {
+        color: gold;
+        font-size: large;
+        gap: 20px;          /* space between items */
+        flex-wrap: wrap;    /* wrap to next line if too many items */
+        display: flex;
+    }
+
+    .destDisplayObj {
+        width: 400px;        /* your desired div width */
+        /*border: 1px solid #ccc;*/
+        padding: 10px;
+        box-sizing: border-box;
+        display: inline-block;
+    }
+
+    .destDisplayObj img {
+        width: 100%;         /* scale image to div width */
+        height: auto;        /* keep aspect ratio */
+        object-fit: cover;   /* optional: crop image nicely if div height is fixed */
+        display: block;
     }
 
     #book {
