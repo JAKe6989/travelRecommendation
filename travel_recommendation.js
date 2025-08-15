@@ -29,7 +29,7 @@ function searchKeyword() {
                 console.log(city.name);
                 recommendationsDiv.innerHTML += `<div class="destDisplayObj">
                     <img src="${city.imageUrl}" alt="noImage">
-                    <p><b>${city.name}</b>  ${city.description}</p>
+                    <p><b>${city.name}</b>&nbsp;&nbsp;${city.description}</p>
                     </div>`;
             })
         }    
@@ -59,7 +59,7 @@ function searchKeyword() {
                     console.log(item.name);
                     recommendationsDiv.innerHTML += `<div class="destDisplayObj">
                         <img src="${item.imageUrl}" alt="noImage">
-                        <p><b>${item.name}</b>  ${item.description}</p>
+                        <p><b>${item.name}</b>&nbsp;&nbsp;${item.description}</p>
                         </div>`;
                 })
             }
