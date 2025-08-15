@@ -1,4 +1,6 @@
 const btnSearch = document.getElementById('btnSearch');
+const btnClear = document.getElementById('btnClear');
+
 
 function searchKeyword() {
     const keyword = document.getElementById('destKeyword').value.toLowerCase();
@@ -18,8 +20,7 @@ function searchKeyword() {
         var countryDestinations = data.countries.filter(country => {
             return country.name.toLowerCase().includes(keyword)
         });
-        
-        const cityDestinations=[];
+        var        const cityDestinations=[];
         if (countryDestinations.length>0) {
             cityDestinations = countryDestinations[0].cities;
         }
@@ -48,7 +49,6 @@ function searchKeyword() {
             }
             categoryDestinations.forEach(item => console.log(item.name));
 
-            //const categoryDestinationObject = Object.values(countryDestinations); //JSON.parse(countryDestinations);
             const categoryObjectArray = Object.values(categoryDestinations);
             console.log(`category matches: `);
             console.log(categoryObjectArray);
@@ -64,83 +64,25 @@ function searchKeyword() {
                 })
             }
         }
-    /*const location_keys = Object.keys(data)
-        .filter(key => key.toLowerCase().includes(keyword)) // Filter keys containing "Name"
-        .reduce((obj, key) => {
-        return { ...obj, [key]: data[key] };
-        //})
-    }, {});*/
-    /*const location_keys = data.filter(item => {return item.toLowerCase().includes(keyword);
-        });*/
-    /*if (location_keys) {
-        console.log(typeof location.keys);
-        console.log(location_keys);
-        location_keys.forEach(element => {
-            console.log(element);})
-    } else {
-        recommendationsDiv.innerHTML = 'Location not found.';
-    }*/
      })
-
-        /*  const symptoms = condition.symptoms.join(', ');
-          const prevention = condition.prevention.join(', ');
-          const treatment = condition.treatment;
-
-          resultDiv.innerHTML += `<h3>${condition.name}</h3>`;
-
-          resultDiv.innerHTML += `<img src="${condition.imagesrc}" alt="hjh">`;
-
-          resultDiv.innerHTML += `<p><strong>Symptoms:</strong> ${symptoms}</p>`;
-          resultDiv.innerHTML += `<p><strong>Prevention:</strong> ${prevention}</p>`;
-          resultDiv.innerHTML += `<p><strong>Treatment:</strong> ${treatment}</p>`;
-        */
       .catch(error => {
         console.error('Error:', error);
         recommendationsDiv.innerHTML = 'An error occurred while fetching data.';
       });
   }
 
+
+nst keyInput = document.getElementById('destKeyword');
+    keyInputnputdestKeywordconst recommendationsDiv = document.getElementById('recommendations');
+        function clearResults() {
+    const recommendationsDiv = document.getElementById('recommendations');
+   
+ recommendationsDiv.innerHTML = '';
+
+  }
 btnSearch.addEventListener('click', searchKeyword);
+btnClear.addEventListener('click', clearResults);
 
-/*function generateReport() {
-    const numPatients = patients.length;
-    const conditionsCount = {
-      Diabetes: 0,
-      Thyroid: 0,
-      "High Blood Pressure": 0,
-    };
-    const genderConditionsCount = {
-      Male: {
-        Diabetes: 0,
-        Thyroid: 0,
-        "High Blood Pressure": 0,
-      },
-      Female: {
-        Diabetes: 0,
-        Thyroid: 0,
-        "High Blood Pressure": 0,
-      },
-    };
-
-    for (const patient of patients) {
-      conditionsCount[patient.condition]++;
-      genderConditionsCount[patient.gender][patient.condition]++;
-    }
-
-    report.innerHTML = `Number of patients: ${numPatients}<br><br>`;
-    report.innerHTML += `Conditions Breakdown:<br>`;
-    for (const condition in conditionsCount) {
-      report.innerHTML += `${condition}: ${conditionsCount[condition]}<br>`;
-    }
-
-    report.innerHTML += `<br>Gender-Based Conditions:<br>`;
-    for (const gender in genderConditionsCount) {
-      report.innerHTML += `${gender}:<br>`;
-      for (const condition in genderConditionsCount[gender]) {
-        report.innerHTML += `&nbsp;&nbsp;${condition}: ${genderConditionsCount[gender][condition]}<br>`;
-      }
-    }
-  }*/
 function bookCustomer() {
     alert("Please call us at 716-555-1234!");
 }
