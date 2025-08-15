@@ -17,10 +17,10 @@ function searchKeyword() {
       .then(data => {
         console.log(data);
 
-        var countryDestinations = data.countries.filter(country => {
+        const countryDestinations = data.countries.filter(country => {
             return country.name.toLowerCase().includes(keyword)
         });
-        var        const cityDestinations=[];
+        var cityDestinations=[];
         if (countryDestinations.length>0) {
             cityDestinations = countryDestinations[0].cities;
         }
@@ -71,15 +71,13 @@ function searchKeyword() {
       });
   }
 
-
-nst keyInput = document.getElementById('destKeyword');
-    keyInputnputdestKeywordconst recommendationsDiv = document.getElementById('recommendations');
-        function clearResults() {
+ function clearResults() {
+    document.getElementById('destKeyword').value='';
     const recommendationsDiv = document.getElementById('recommendations');
    
- recommendationsDiv.innerHTML = '';
-
+    recommendationsDiv.innerHTML = '';
   }
+
 btnSearch.addEventListener('click', searchKeyword);
 btnClear.addEventListener('click', clearResults);
 
